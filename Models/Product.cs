@@ -20,7 +20,7 @@ namespace Settimana_3_Manuel.Models
         [Range(0, 60)]
         public int DeliveryTimeInMinutes { get; set; }
         public List<Ingredient> Ingredients { get; set; } = [];
-        public List<Order> Orders { get; set; } = [];
+        public List<OrderProduct> OrderProducts { get; set; } = [];
 
     }
 }

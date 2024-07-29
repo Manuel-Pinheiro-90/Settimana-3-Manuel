@@ -13,7 +13,7 @@ namespace Settimana_3_Manuel.Models
         public string ExtraNote { get; set; }
         public bool Processed { get; set; } = false;   
         public User User { get; set; }
-        public List<Product> Products { get; set; } = [];   
+        public List<OrderProduct> OrderProducts { get; set; } = [];   
 
 
     }
