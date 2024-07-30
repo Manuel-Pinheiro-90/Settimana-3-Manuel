@@ -1,0 +1,53 @@
+﻿@model IEnumerable<Settimana_3_Manuel.Models.Product>
+
+<h1>Products</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Delivery Time</th>
+            <th>Photo</th>
+            <th>Ingredients</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Name</td>
+                <td>@item.Price</td>
+            
+                <td>@item.DeliveryTimeInMinutes</td>
+                <td>
+                    @if (!string.IsNullOrEmpty(item.Photo))
+                    {
+                        <img src="data:image/png;base64,@item.Photo" width="100" />
+                    }
+                </td>
+                <td>
+                    @if (item.Ingredients != null && item.Ingredients.Any())
+                    {
+                        <ul>
+                            @foreach (var ingredient in item.Ingredients)
+                            {
+                                <li>@ingredient.Name</li>
+                            }
+                        </ul>
+                    }
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -10,9 +10,10 @@ namespace Settimana_3_Manuel.Models
         [Required]
         [StringLength(50)]
         public required string Name { get; set; }
-        [Range(0, 100)]
-        [Required, StringLength(128)]
-        public required string Photo { get; set; }
+      
+        [Required]
+        [Column(TypeName = "nvarchar(max)")]
+        public  string Photo { get; set; }
 
 
         public decimal Price { get; set; }

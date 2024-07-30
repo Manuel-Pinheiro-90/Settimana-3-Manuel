@@ -11,7 +11,26 @@ namespace Settimana_3_Manuel.Context
         public virtual DbSet<Role> Roles { get; set; }
         public virtual DbSet<Order> Orders { get; set; }
 
-        public DataContext(DbContextOptions<DataContext> opt) : base(opt) { }
+        public DataContext(DbContextOptions<DataContext> options) : base(options) { }
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<Product>()
+                .HasMany(p => p.Ingredients)
+                .WithMany(i => i.Products)
+                .UsingEntity(j => j.ToTable("IngredientProduct"));
+
+            modelBuilder.Entity<Order>()
+                .HasMany(o => o.OrderProducts)
+                .WithOne(op => op.Order)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<Product>()
+                .HasMany(p => p.OrderProducts)
+                .WithOne(op => op.Product)
+                .OnDelete(DeleteBehavior.Cascade);
+        }
     }
 }

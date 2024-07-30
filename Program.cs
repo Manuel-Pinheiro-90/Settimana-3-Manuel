@@ -1,10 +1,20 @@
 using Microsoft.EntityFrameworkCore;
 using Settimana_3_Manuel.Context;
+using Settimana_3_Manuel.Models;
+using Settimana_3_Manuel.Service;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddScoped<IngredientService>();
+builder.Services.AddScoped<ProductService>();  
+
+
 builder.Services.AddControllersWithViews();
+
+
+
+
 
 var conn = builder.Configuration.GetConnectionString("CON")!;
 builder.Services.AddDbContext<DataContext>(opt => opt.UseSqlServer(conn));
