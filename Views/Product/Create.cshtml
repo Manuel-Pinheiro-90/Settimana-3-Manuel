@@ -14,7 +14,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="Price" class="control-label"></label>
-                <input asp-for="Price" class="form-control" />
+                <input asp-for="Price" type="number" class="form-control" />
                 <span asp-validation-for="Price" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -29,7 +29,13 @@
             </div>
             <div class="form-group">
                 <label>Ingredients</label>
-                <select asp-for="SelectedIngredients" class="form-control" asp-items="@(new MultiSelectList(Model.Ingredients, "Id", "Name"))" multiple="multiple"></select>
+                @foreach (var ingredient in Model.Ingredients)
+                {
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="SelectedIngredients" value="@ingredient.Id" />
+                        <label class="form-check-label" for="SelectedIngredients">@ingredient.Name</label>
+                    </div>
+                }
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
