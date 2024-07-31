@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
 using Settimana_3_Manuel.Context;
 using Settimana_3_Manuel.Models;
@@ -18,6 +19,21 @@ builder.Services.AddControllersWithViews();
 
 var conn = builder.Configuration.GetConnectionString("CON")!;
 builder.Services.AddDbContext<DataContext>(opt => opt.UseSqlServer(conn));
+
+builder.Services.AddScoped<IAuthService, AuthService>();
+builder.Services.AddScoped<IPasswordEncoder, PasswordEncoder>();
+
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+    .AddCookie(options =>
+    {
+        options.LoginPath = "/Auth/Login";
+        options.LogoutPath = "/Auth/Logout";
+    });
+
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("AdminOnly", policy => policy.RequireRole("Admin"));
+});
 
 
 

@@ -31,6 +31,14 @@ namespace Settimana_3_Manuel.Context
                 .HasMany(p => p.OrderProducts)
                 .WithOne(op => op.Product)
                 .OnDelete(DeleteBehavior.Cascade);
+            
+            modelBuilder.Entity<User>()
+              .HasMany(u => u.Roles)
+                .WithMany(r => r.Users)
+                .UsingEntity(j => j.ToTable("RoleUser"));
+
+
+
         }
     }
 }

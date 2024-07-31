@@ -14,7 +14,7 @@ namespace Settimana_3_Manuel.Models
         [EmailAddress]
         public required string Email { get; set; }
         [Required]
-        [StringLength(20)]
+        [Column(TypeName = "nvarchar(max)")]
         public required string Password { get; set; }
 
         public List<Role> Roles { get; set; } = [];
