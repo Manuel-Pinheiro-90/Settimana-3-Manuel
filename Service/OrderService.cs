@@ -29,6 +29,13 @@ namespace Settimana_3_Manuel.Service
                 .Include(o => o.OrderProducts)
                 .ThenInclude(op => op.Product)
                 .FirstOrDefaultAsync(o => o.User.Id == userId && !o.Processed);
+            if (string.IsNullOrEmpty(extraNote))
+            {
+                extraNote = "Nessuna nota aggiuntiva";
+            
+            }
+
+
 
             if (order == null)
             {
