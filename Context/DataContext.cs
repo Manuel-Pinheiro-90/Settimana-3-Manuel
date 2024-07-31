@@ -10,7 +10,7 @@ namespace Settimana_3_Manuel.Context
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<Role> Roles { get; set; }
         public virtual DbSet<Order> Orders { get; set; }
-
+        public virtual DbSet<OrderProduct> OrderProducts { get; set; }
         public DataContext(DbContextOptions<DataContext> options) : base(options) { }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

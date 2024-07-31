@@ -12,10 +12,10 @@ namespace Settimana_3_Manuel.Controllers
 {
     public class ProductController : Controller
     {
-        private readonly ProductService _productService;
-        private readonly IngredientService _ingredientService;
+        private readonly IProductService _productService;
+        private readonly IIngredientService _ingredientService;
 
-        public ProductController(ProductService productService, IngredientService ingredientService)
+        public ProductController(IProductService productService, IIngredientService ingredientService)
         {
             _productService = productService;
             _ingredientService = ingredientService;

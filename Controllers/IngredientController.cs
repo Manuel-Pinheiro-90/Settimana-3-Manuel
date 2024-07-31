@@ -8,9 +8,9 @@ namespace Settimana_3_Manuel.Controllers
 {
     public class IngredientController : Controller
     {
-        private readonly IngredientService _ingredientService;
+        private readonly IIngredientService _ingredientService;
 
-        public IngredientController(IngredientService ingredientService)
+        public IngredientController(IIngredientService ingredientService)
         {
             _ingredientService = ingredientService;
         }

@@ -34,7 +34,8 @@ namespace Settimana_3_Manuel.Controllers
             var claims = new List<Claim>
             {
                 new Claim(ClaimTypes.Name, u.Name),
-                new Claim(ClaimTypes.Email, u.Email)
+                new Claim(ClaimTypes.Email, u.Email),
+                new Claim(ClaimTypes.NameIdentifier, u.Id.ToString())
             };
             u.Roles.ForEach(r => claims.Add(new Claim(ClaimTypes.Role, r.Name)));
 
