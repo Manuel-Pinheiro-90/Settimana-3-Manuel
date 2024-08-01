@@ -19,7 +19,7 @@
                 <td>@order.Id</td>
                 <td>@order.Date</td>
                 <td>@order.Address</td>
-                <td>@(order.Processed ? "EVASO" : "IN ATTESA" )</td>
+                <td>@(order.Processed ? "Processed" : "waiting")</td>
                 <td>
                     <ul>
                         @foreach (var item in order.OrderProducts)

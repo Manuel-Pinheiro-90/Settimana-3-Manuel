@@ -10,6 +10,10 @@ namespace Settimana_3_Manuel.Service
         Task ProcessOrder(int OrderId);
         Task DeleteOrder(int orderId);
 
+        Task<int> GetTotalProcessedOrders();
+        Task<decimal> GetTotalEarningsForDay(DateTime date);
+
+
 
     }
 }

@@ -23,6 +23,7 @@ namespace Settimana_3_Manuel.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Login(User user)
         {
             var u = _authService.Login(user.Name, user.Password);
@@ -57,6 +58,7 @@ namespace Settimana_3_Manuel.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public IActionResult Register(User user)
         {
             _authService.Register(user);

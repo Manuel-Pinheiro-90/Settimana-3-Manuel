@@ -6,6 +6,14 @@
 
 <h1>All Orders</h1>
 
+<div id="order-stats">
+    <p>Total Processed Orders: <span id="total-processed-orders"></span></p>
+    <p>Total Earnings for Today: <span id="total-earnings"></span></p>
+</div>
+
+
+
+
 <table class="table">
     <thead>
         <tr>
@@ -25,8 +33,8 @@
                 <td>@order.User.Name</td>
                 <td>@order.Date.ToString("dd/MM/yyyy HH:mm")</td>
                 <td>@order.Address</td>
-                <td>@order.ExtraNote</td> 
-                <td>@(order.Processed ? "EVASO": "IN ATTESA")</td>
+                <td>@order.ExtraNote</td>
+                <td>@(order.Processed ? "Processed" : "waiting")</td>
                 <td>
                     <ul>
                         @foreach (var orderProduct in order.OrderProducts)
@@ -52,3 +60,22 @@
         }
     </tbody>
 </table>
+
+
+@section Scripts {
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            fetch('/api/OrderApi/totalProcessedOrders')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('total-processed-orders').innerText = data;
+                });
+
+            fetch('/api/OrderApi/totalEarningsForDay?date=' + new Date().toISOString())
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('total-earnings').innerText = data;
+                });
+        });
+    </script>
+    }

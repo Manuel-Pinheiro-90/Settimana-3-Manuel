@@ -13,7 +13,7 @@ builder.Services.AddScoped<IIngredientService, IngredientService>();
 
 
 builder.Services.AddControllersWithViews();
-
+builder.Services.AddControllers();
 
 
 

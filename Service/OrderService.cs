@@ -101,7 +101,19 @@ namespace Settimana_3_Manuel.Service
         }
 
 
+        public async Task<int> GetTotalProcessedOrders()
+        {
+            return await _context.Orders.CountAsync(o => o.Processed);
+        }
 
+
+        public async Task<decimal> GetTotalEarningsForDay(DateTime date)
+        {
+            return await _context.Orders
+                .Where(o => o.Processed && o.Date.Date == date.Date)
+                .SelectMany(o => o.OrderProducts)
+                .SumAsync(op => op.Product.Price * op.Quantity);
+        }
 
 
 

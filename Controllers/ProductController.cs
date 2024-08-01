@@ -180,18 +180,36 @@ namespace Settimana_3_Manuel.Controllers
 
         }
 
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+
+
+        [HttpGet]
+        public async Task<IActionResult> GetProductImage(int id)
         {
-            await _productService.Delete(id);
-            return RedirectToAction(nameof(Index));
+            var product = await _productService.GetById(id);
+            if (product == null || string.IsNullOrEmpty(product.Photo))
+            {
+                return NotFound();
+            }
+
+            byte[] imageBytes = Convert.FromBase64String(product.Photo);
+            return File(imageBytes, "image/png");
         }
 
+    
+
+
+    [HttpPost, ActionName("Delete")]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> DeleteConfirmed(int id)
+    {
+        await _productService.Delete(id);
+        return RedirectToAction(nameof(Index));
+    }
 
 
 
 
+}
 
 
 
@@ -207,4 +225,4 @@ namespace Settimana_3_Manuel.Controllers
 
 
 
-    }
+    
