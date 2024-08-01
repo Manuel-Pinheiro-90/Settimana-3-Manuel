@@ -15,7 +15,7 @@ namespace Settimana_3_Manuel.Models
         [Column(TypeName = "nvarchar(max)")]
         public  string Photo { get; set; }
 
-
+        [Required]
         public decimal Price { get; set; }
      
         [Range(0, 60)]

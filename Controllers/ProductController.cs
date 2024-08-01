@@ -21,7 +21,7 @@ namespace Settimana_3_Manuel.Controllers
             _ingredientService = ingredientService;
         }
 
-        // GET: Product
+        // ///////////////////////////////////////GET ALL///////////////////////////////////////////////////////////////////
         public async Task<IActionResult> Index()
         {
             var products = await _productService.GetAll();
@@ -29,7 +29,7 @@ namespace Settimana_3_Manuel.Controllers
         }
 
 
-        // GET: Product/Create
+        // //////////////////////////////////////CREATE///////////////////////////////////////////////////////////////////
         public async Task<IActionResult> Create()
         {
             var ingredients = await _ingredientService.GetAll();
@@ -40,7 +40,7 @@ namespace Settimana_3_Manuel.Controllers
             return View(viewModel);
         }
 
-        // POST: Product/Create
+       
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(ProductCreateViewModel viewModel)
@@ -86,7 +86,7 @@ namespace Settimana_3_Manuel.Controllers
         }
 
 
-        // //////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // ///////////////////////////////////////EDIT///////////////////////////////////////////////////////////////////
 
 
         public async Task<IActionResult> Edit(int id)
@@ -108,7 +108,7 @@ namespace Settimana_3_Manuel.Controllers
             return View(viewModel);
         }
 
-        // POST: Product/Edit/5
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, ProductCreateViewModel viewModel)
@@ -140,6 +140,7 @@ namespace Settimana_3_Manuel.Controllers
                     }
                 }
 
+
                 product.Ingredients.Clear();
                 if (viewModel.SelectedIngredients != null)
                 {
@@ -163,7 +164,7 @@ namespace Settimana_3_Manuel.Controllers
 
 
 
-        // //////////////////////////////////////////////////////////////////////////////////////////////////
+        // ////////////////////////////////////////DELETE//////////////////////////////////////////////////////////
 
 
         public async Task<IActionResult> Delete(int id)
@@ -180,7 +181,7 @@ namespace Settimana_3_Manuel.Controllers
 
         }
 
-
+        // ///////////////////////////////////////GetProductIMAGE/////////////////////////////////////////////////////////////////
 
         [HttpGet]
         public async Task<IActionResult> GetProductImage(int id)
@@ -195,10 +196,10 @@ namespace Settimana_3_Manuel.Controllers
             return File(imageBytes, "image/png");
         }
 
-    
 
+        // ///////////////////////////////////////DELETE///////////////////////////////////////////////////////////////////
 
-    [HttpPost, ActionName("Delete")]
+        [HttpPost, ActionName("Delete")]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> DeleteConfirmed(int id)
     {

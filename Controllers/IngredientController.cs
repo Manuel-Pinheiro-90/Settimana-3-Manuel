@@ -14,13 +14,14 @@ namespace Settimana_3_Manuel.Controllers
         {
             _ingredientService = ingredientService;
         }
-
+        // /////////////////////////////////////////////////////Get ALL/////////////////////////////////////////////////////
         public async Task<IActionResult> Index()
         {
             var ingredients = await _ingredientService.GetAll();
             return View(ingredients);
         }
 
+        // ///////////////////////////////////////DETTAGLI///////////////////////////////////////////////////////////////////
         public async Task<IActionResult> Details(int id)
         {
             var ingredient = await _ingredientService.GetById(id);
@@ -30,6 +31,7 @@ namespace Settimana_3_Manuel.Controllers
             }
             return View(ingredient);
         }
+        // ///////////////////////////////////////CREATE/////////////////////////////////////////////////////////////////
 
         public IActionResult Create()
         {
@@ -47,6 +49,8 @@ namespace Settimana_3_Manuel.Controllers
             }
             return View(ingredient);
         }
+
+        // ///////////////////////////////////////EDIT///////////////////////////////////////////////////////////////////
 
         public async Task<IActionResult> Edit(int id)
         {
@@ -97,6 +101,8 @@ namespace Settimana_3_Manuel.Controllers
             }
             return View(ingredient);
         }
+
+        // //////////////////////////////////////DELETE//////////////////////////////////////////////////////////////////
 
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]

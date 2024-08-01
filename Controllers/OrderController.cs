@@ -15,7 +15,7 @@ namespace Settimana_3_Manuel.Controllers
             _orderService = orderService;
             _productService = productService;
         }
-        // ///////////////////////////////////////////////////////////////////////////////////
+        // ////////////////////////////////////INDEX///////////////////////////////////////////////
 
 
         public async Task<IActionResult> Index()
@@ -25,7 +25,7 @@ namespace Settimana_3_Manuel.Controllers
             return View(orders);
         }
 
-        // ///////////////////////////////////////////////////////////////////////////////////
+        // ////////////////////////////////////ADD TO ORDER///////////////////////////////////////////////
         
         [HttpPost]
         public async Task<IActionResult> AddToOrder(int productId, int quantity, string address, string extraNote)
@@ -35,7 +35,7 @@ namespace Settimana_3_Manuel.Controllers
             return Ok(); 
         }
 
-        // ///////////////////////////////////////////////////////////////////////////////////
+        // //////////////////////////////////ALL ORDERS/////////////////////////////////////////////////
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> AllOrders()
         {
@@ -43,7 +43,7 @@ namespace Settimana_3_Manuel.Controllers
             return View(orders);
         }
 
-        // ///////////////////////////////////////////////////////////////////////////////////
+        // //////////////////////////////////PROCESSED ORDERS/////////////////////////////////////////////////
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> ProcessOrder(int orderId)
         {
@@ -51,7 +51,7 @@ namespace Settimana_3_Manuel.Controllers
             return RedirectToAction("AllOrders");
         }
 
-        // /////////////////////////////////////////////////////////////////////////////////////////
+        // ///////////////////////////////////////DELETE ORDERS//////////////////////////////////////////////////
         [Authorize(Roles = "Admin")]
         [HttpPost]
         public async Task<IActionResult> DeleteOrder(int orderId)

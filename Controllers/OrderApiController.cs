@@ -23,9 +23,9 @@ namespace Settimana_3_Manuel.Controllers
         }
 
         [HttpGet("totalEarningsForDay")]
-        public async Task<IActionResult> GetTotalEarningsForDay(DateTime date)
+        public async Task<IActionResult> GetTotalEarningsForDay()
         {
-            var totalEarnings = await _orderService.GetTotalEarningsForDay(date);
+            var totalEarnings = await _orderService.GetTotalEarningsForDay();
             return Ok(totalEarnings);
         }
 
