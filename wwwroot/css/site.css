@@ -1,22 +1,174 @@
 html {
-  font-size: 14px;
+    font-size: 14px;
+    position: relative;
+    min-height: 100%;
 }
 
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
-}
-
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
-}
-
-html {
-  position: relative;
-  min-height: 100%;
+    html {
+        font-size: 16px;
+    }
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
+}
+
+/* Focus styles */
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+/* Navbar styles */
+.navbar-brand {
+    font-weight: bold;
+    color: #007bff !important;
+}
+
+.nav-link {
+    font-size: 1.1em;
+    padding: 0.5em 1em;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+    .nav-link:hover {
+        background-color: #f8f9fa;
+        color: #007bff !important;
+    }
+
+.navbar-text {
+    font-size: 1.1em;
+    font-weight: 500;
+    color: #343a40;
+}
+
+.nav-item .nav-link {
+    color: #dc3545 !important;
+    font-weight: bold;
+}
+
+    .nav-item .nav-link:hover {
+        color: #fff !important;
+        background-color: #dc3545 !important;
+    }
+
+.box-shadow {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-text.ms-auto {
+    margin-left: auto;
+}
+
+/* Jumbotron styles */
+.jumbotron {
+    background: linear-gradient(to right, #ff7e5f, #feb47b);
+    color: white;
+    padding: 4rem 2rem;
+    border-radius: 0.5rem;
+}
+
+    .jumbotron .btn-light {
+        background-color: #fff;
+        color: #ff7e5f;
+        border: none;
+        transition: background-color 0.3s, color 0.3s;
+    }
+
+        .jumbotron .btn-light:hover {
+            background-color: #ff7e5f;
+            color: #fff;
+        }
+
+/* Card  */
+.card {
+    border: none;
+    border-radius: 0.5rem;
+}
+
+.card-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #ff7e5f;
+}
+
+.card-text {
+    font-size: 1.1rem;
+}
+
+.card .btn-primary, .card .btn-outline-primary {
+    background-color: #ff7e5f;
+    border: none;
+    transition: background-color 0.3s;
+}
+
+    .card .btn-primary:hover, .card .btn-outline-primary:hover {
+        background-color: #feb47b;
+    }
+
+.card .btn-outline-secondary, .card .btn-outline-danger {
+    transition: background-color 0.3s, color 0.3s;
+}
+
+    .card .btn-outline-secondary:hover {
+        background-color: #6c757d;
+        color: white;
+    }
+
+    .card .btn-outline-danger:hover {
+        background-color: #dc3545;
+        color: white;
+    }
+
+/* Ingredient lista stile */
+.list-unstyled {
+    padding-left: 0;
+}
+
+/* Modale  */
+.modal-body .form-label {
+    color: #343a40;
+}
+
+
+.container h2 {
+    color: #ff7e5f;
+    margin-bottom: 1.5rem;
+}
+
+.container p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+}
+
+
+
+/* Footer  */
+.footer {
+    background: linear-gradient(to right, #ff7e5f, #feb47b);
+    color: white;
+    padding: 2rem 0;
+}
+
+    .footer a {
+        color: white;
+        text-decoration: none;
+    }
+
+        .footer a:hover {
+            color: #343a40;
+        }
+
+    .footer .fab {
+        font-size: 1.5rem;
+    }
+
+        .footer .fab:hover {
+            color: #343a40;
+        }
+
+@media (max-width: 767.98px) {
+    .footer .text-md-left, .footer .text-md-right {
+        text-align: center !important;
+    }
 }

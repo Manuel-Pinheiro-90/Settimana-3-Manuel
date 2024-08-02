@@ -2,20 +2,20 @@
     ViewData["Title"] = "Home";
 }
 
-<div class="jumbotron text-center">
+<div class="jumbotron text-center bg-primary text-white">
     <div class="container">
         <h1 class="display-4">Welcome to In Forno!</h1>
         <p class="lead">The best pizzeria to enjoy freshly baked pizzas.</p>
-        <hr class="my-4">
+        <hr class="my-4 bg-light">
         <p>Discover our products and order your favorite pizza online.</p>
-       
+        <a href="@Url.Action("Index", "Product")" class="btn btn-light btn-lg">Order Now</a>
     </div>
 </div>
 
-<div class="container">
+<div class="container mt-5">
     <div class="row">
         <div class="col-md-6">
-            <div class="card mb-4 shadow-sm">
+            <div class="card mb-4 shadow-sm h-100">
                 <div class="card-body text-center">
                     <h5 class="card-title">Our Products</h5>
                     <p class="card-text">Check out our delicious range of pizzas.</p>
@@ -24,7 +24,7 @@
             </div>
         </div>
         <div class="col-md-6">
-            <div class="card mb-4 shadow-sm">
+            <div class="card mb-4 shadow-sm h-100">
                 <div class="card-body text-center">
                     <h5 class="card-title">Your Cart</h5>
                     <p class="card-text">View and manage your orders.</p>
@@ -35,7 +35,7 @@
     </div>
 </div>
 
-<div class="container">
+<div class="container mt-5">
     <h2 class="text-center mb-4">About Us</h2>
-    <p>In Forno is a family-run pizzeria offering a wide range of pizzas made with fresh, high-quality ingredients. Our goal is to provide an unforgettable culinary experience to all our customers. Come visit us or order online to try our delicious pizzas!</p>
+    <p class="text-center">In Forno is a family-run pizzeria offering a wide range of pizzas made with fresh, high-quality ingredients. Our goal is to provide an unforgettable culinary experience to all our customers. Come visit us or order online to try our delicious pizzas!</p>
 </div>
