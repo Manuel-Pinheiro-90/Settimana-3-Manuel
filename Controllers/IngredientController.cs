@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Settimana_3_Manuel.Models;
@@ -6,8 +7,10 @@ using Settimana_3_Manuel.Service;
 
 namespace Settimana_3_Manuel.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class IngredientController : Controller
     {
+        
         private readonly IIngredientService _ingredientService;
 
         public IngredientController(IIngredientService ingredientService)

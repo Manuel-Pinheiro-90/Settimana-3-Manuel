@@ -2,6 +2,7 @@
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -10,6 +11,7 @@ using Settimana_3_Manuel.Service;
 
 namespace Settimana_3_Manuel.Controllers
 {
+    [Authorize]
     public class ProductController : Controller
     {
         private readonly IProductService _productService;
@@ -30,6 +32,7 @@ namespace Settimana_3_Manuel.Controllers
 
 
         // //////////////////////////////////////CREATE///////////////////////////////////////////////////////////////////
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Create()
         {
             var ingredients = await _ingredientService.GetAll();
@@ -42,6 +45,7 @@ namespace Settimana_3_Manuel.Controllers
 
        
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(ProductCreateViewModel viewModel)
         {
@@ -88,7 +92,7 @@ namespace Settimana_3_Manuel.Controllers
 
         // ///////////////////////////////////////EDIT///////////////////////////////////////////////////////////////////
 
-
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Edit(int id)
         {
             var product = await _productService.GetById(id);
@@ -110,6 +114,7 @@ namespace Settimana_3_Manuel.Controllers
 
         
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, ProductCreateViewModel viewModel)
         {
@@ -166,7 +171,7 @@ namespace Settimana_3_Manuel.Controllers
 
         // ////////////////////////////////////////DELETE//////////////////////////////////////////////////////////
 
-
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int id)
         {
             var product = await _productService.GetById(id);
@@ -200,7 +205,8 @@ namespace Settimana_3_Manuel.Controllers
         // ///////////////////////////////////////DELETE///////////////////////////////////////////////////////////////////
 
         [HttpPost, ActionName("Delete")]
-    [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
+        [ValidateAntiForgeryToken]
     public async Task<IActionResult> DeleteConfirmed(int id)
     {
         await _productService.Delete(id);

@@ -17,7 +17,7 @@ namespace Settimana_3_Manuel.Controllers
         }
         // ////////////////////////////////////INDEX///////////////////////////////////////////////
 
-
+        [Authorize]
         public async Task<IActionResult> Index()
         {
             var userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);

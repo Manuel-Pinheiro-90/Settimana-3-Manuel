@@ -38,7 +38,7 @@ namespace Settimana_3_Manuel.Service
         {
             user.Password = _passwordEncoder.Encode(user.Password);
 
-            // Assegna il ruolo 'User' di default
+            // Assegna il ruolo 'User' di default, l'Admin bisogna aggiungerlo manualemente da DB
             var userRole = _context.Roles.FirstOrDefault(r => r.Name == "User");
             if (userRole != null)
             {
